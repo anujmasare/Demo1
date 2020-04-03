@@ -7,10 +7,91 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
-public class MatrixEx {
+class MatrixEx {
+
+	// Complete the migratoryBirds function below.
+	static int migratoryBirds(List<Integer> arr) {
+		Map<Integer, Integer> mp =new TreeMap<Integer, Integer>();
+		int count=98765;
+		for(int i:arr) {
+			if(mp.containsKey(i)) {
+				mp.put(i,((int)mp.get(i)+1));
+			}
+			else {
+				mp.put(i, 1);
+			}
+		}
+		for(int j:mp.keySet()) {
+			if(count ==98765)
+				count =j;
+			else {
+				if(mp.get(count) < mp.get(j))
+					count =j;
+			}
+		}
+		return count;
+
+	}
+
+
+
+	static int divisibleSumPairs(int n, int k, int[] ar) {
+		int count =0;
+		for(int i=0;i<n;i++) {
+			for(int j=i+1;j<n;j++) {
+				if((ar[i]+ar[j])% k==0) {
+					count++;
+				}
+			}
+		}
+
+		return count;
+
+	}
+	 // Complete the dayOfProgrammer function below.
+    static String dayOfProgrammer(int year) {
+    	String day="13.09."+year;
+    	//if(year % 400 ==0 || (year %4==0 && year %100 !=0)) 
+    	if ((year % 4 == 0))
+    		day ="12.09."+year;
+    	
+    	return day;
+
+    }
+    static void bonAppetit(List<Integer> bill, int k, int b) {
+    	int sum=0;
+    	bill.remove(k);
+        for(int i :bill) {
+        	sum +=i;
+        }
+        sum =sum/2;
+        if(sum ==b)
+        	System.out.println("Bon Appetit");
+        else
+        	System.out.println(b-sum);
+        
+
+    }
+
+
 
 	public static void main(String[] args) {
+		
+		
+		System.out.println(dayOfProgrammer(1800));
+		//migratoryBirds();
+		//18001213575
+		//01171450051
+		//04435470552
+		
+		
+		int[] z= {1, 3, 2, 6, 1, 2};
+		System.out.println(divisibleSumPairs(6,3,z));
+
+
 		LinkedList<LinkedList>  al = new LinkedList<LinkedList> ();
 		LinkedList<Integer>  v = new LinkedList<Integer> ();
 		v.add(1);
@@ -108,7 +189,7 @@ public class MatrixEx {
 			}
 			low =low +1;
 			high =high -1;
-			
+
 		}
 
 		for(int i=0;i<number;i++) {
