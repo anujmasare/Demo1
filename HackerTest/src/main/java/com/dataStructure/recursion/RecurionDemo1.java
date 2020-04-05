@@ -21,7 +21,16 @@ public class RecurionDemo1 {
 
 		//System.out.println(funMulti(10,10));
 //		System.out.println(funDiv(50,5));
+		//System.out.println(funMultiA(2,3));//x(x*y)   3,110
 	}
+//	static int funMultiA(int a,int b){
+//		if(b==0) {
+//			return 0;
+//		}
+//		else {
+//			return a+ (a+funMultiA(a,b-1));
+//		}
+//	}
 
 	static int fun(int x, int y) 
 	{ 
