@@ -20,17 +20,29 @@ public class RecurionDemo1 {
 		//System.out.println(fun(4,3));
 
 		//System.out.println(funMulti(10,10));
-//		System.out.println(funDiv(50,5));
+		//		System.out.println(funDiv(50,5));
 		//System.out.println(funMultiA(2,3));//x(x*y)   3,110
+
+		//EX1
+		int a[]= {10,2,1,4};
+		System.out.println(searchBiggestArray(a,3));
 	}
-//	static int funMultiA(int a,int b){
-//		if(b==0) {
-//			return 0;
-//		}
-//		else {
-//			return a+ (a+funMultiA(a,b-1));
-//		}
-//	}
+	static int big=0;
+	public static int searchBiggestArray(int a[],int n) {
+		if(n==-1)
+			return big;
+		else {
+			if(big<a[n]) {
+				big =a[n];
+			}
+			searchBiggestArray(a,--n);
+			return big;
+		}
+		
+		
+	}
+
+
 
 	static int fun(int x, int y) 
 	{ 
@@ -48,7 +60,7 @@ public class RecurionDemo1 {
 		}
 
 	}
-static int count =0;
+	static int count =0;
 	static int funDiv(int a,int b) {
 		//int count=1;
 		if(a ==0)
@@ -57,11 +69,11 @@ static int count =0;
 		{
 			++count;
 			System.out.println(a+"    "+b+"   "+count);
-			funDiv(a-b,b);
+			funDiv(		a-b,b);
 			return count;
 		}			
 	} 
-	
+
 
 
 	public static int printFunRecursion(int n) {
@@ -130,5 +142,14 @@ static int count =0;
 		else 
 			return (n* factorial(n-1));
 	}
+
+	//	static int funMultiA(int a,int b){
+	//		if(b==0) {
+	//			return 0;
+	//		}
+	//		else {
+	//			return a+ (a+funMultiA(a,b-1));
+	//		}
+	//	}
 
 }
