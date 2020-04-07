@@ -16,7 +16,9 @@ public class HackerRankPractice {
 		int[] az = { 1, 2, 3, 4, 5 };
 		int[] az1 = { 2, 3, -4 };
 		int[] az2 = { 3, -2, -4 };
-		// int[] az1=null;
+		// int[] az1=null; 
+		
+		
 		// plusMinus(az);
 		// staircase(4);
 		// miniMaxSum(az);
