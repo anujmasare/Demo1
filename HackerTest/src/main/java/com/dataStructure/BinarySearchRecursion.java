@@ -1,4 +1,4 @@
-package com.dataStructure.recursion;
+package com.dataStructure;
 
 public class BinarySearchRecursion {
 	public static int binarySearchDemo(int a[],int findNo,int start,int end) {

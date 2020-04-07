@@ -1,4 +1,4 @@
-package com.matrix.diagonal;
+package com.HackerRank;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-class MatrixEx {
+public class HackerRankPractice {
 
 	public static void main(String[] args) {
 		System.out.println(dayOfProgrammer(1800));

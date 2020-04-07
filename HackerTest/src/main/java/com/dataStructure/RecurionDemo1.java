@@ -1,4 +1,4 @@
-package com.dataStructure.recursion;
+package com.dataStructure;
 
 public class RecurionDemo1 {
 

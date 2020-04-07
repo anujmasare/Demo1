@@ -1,4 +1,4 @@
-package com.dataStructure.recursion;
+package com.HackerRank;
 public class PatternEX1 {
 	public static void main(String[] args) {
 		pattern(9);
