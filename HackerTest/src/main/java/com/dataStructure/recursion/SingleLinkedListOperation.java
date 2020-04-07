@@ -1,36 +1,83 @@
 package com.dataStructure.recursion;
 
-import java.util.Arrays;
-
 public class SingleLinkedListOperation {
 	Node head;
 	Node tail;
-	static class Node { 
-		int value; 
-		Node next; 
-		Node(int d) 
-		{ 
-			value = d; 
-			next = null; 
-		} 
-	} 
+	static class Node{
+		Node next ;
+		int value;
+		Node(int v){
+			this.value =v;
+			next =null;
+		}
+	}
+	public static SingleLinkedListOperation insertAtEnd(SingleLinkedListOperation list,int value) {
+		Node n= new Node(value);
+		Node curr =  list.head;
+		Node pre=null;
+		if(curr ==null) {
+			list.head =n;
+			list.tail =n;
+		}else {
+			while(curr !=null) {
+				pre = curr;
+				curr=curr.next;
+			}
+			pre.next = n;
+			list.tail =n;
+		}
+		return list;
+	}
 
-	public static SingleLinkedListOperation insert(SingleLinkedListOperation list, int data) 
-	{ 
-		Node new_node = new Node(data); 
-		new_node.next = null; 
-		if (list.head == null) { 
-			list.head = new_node; 
-		} 
-		else { 
-			Node last = list.head; 
-			while (last.next != null) { 
-				last = last.next; 
-			} 
-			last.next = new_node; 
-		} 
-		return list; 
-	} 
+
+	public static SingleLinkedListOperation insertAtAnyLocation(SingleLinkedListOperation list,int value,int nextTo) {
+		Node curr = list.head;
+		Node prvNode= null,nextNode= null;
+		Node n = new Node(value);
+		if(curr ==null)
+		{
+			list.head = n;
+			list.tail = n;
+		}else {
+			if(nextTo <0) {
+				n.next=list.head.next;
+				list.head =n;
+			}else {
+				while(curr != null) {
+					if(curr.value == nextTo)
+					{
+						prvNode =curr;
+						nextNode = curr.next;
+						curr =null;
+					}else {
+						prvNode =curr;
+						curr =curr.next;
+					}
+				}
+				if(prvNode != null)
+					if(prvNode.next == null) {
+						list.tail = n;
+						prvNode.next =n;
+					}else {
+						prvNode.next =n;
+					}
+
+
+				if(nextNode != null)
+					n.next =nextNode;
+				else
+					list.tail =n;
+
+			}
+		}
+
+
+		return list;
+
+	}
+
+
+
 	public static String searchInlist(SingleLinkedListOperation list,int v) {
 
 		Node curr=list.head;
@@ -54,7 +101,7 @@ public class SingleLinkedListOperation {
 	public static void printList(SingleLinkedListOperation list) {
 		Node curr=list.head;
 		while(curr != null){
-			System.out.print("  "+curr.value);
+			System.out.print(curr.value+" ");
 			curr = curr.next;
 		}
 		System.out.println("");
@@ -62,51 +109,68 @@ public class SingleLinkedListOperation {
 
 	public static void deleteFromList(SingleLinkedListOperation list,int v) {
 		Node curr = list.head;
+		Node preNode=list.head;
 		while(curr !=null) {
-			if(curr.value ==v) {
-				if(curr == list.head) {
+			if(curr.value == v) {
+				if(list.tail.next == list.head.next) {//first node
+					list.head = null;
+					list.tail = null;
+				}else if(list.head ==curr) {
 					list.head =curr.next;
-				}else if(curr == list.tail) {
-
 				}
+				else if(curr.next ==list.tail.next) //end
+				{
+					list.tail =preNode;
+					preNode.next =null;
+				}
+				else {//midddle
+					preNode.next = curr.next;
+				}
+				
+				
 			}
-
+			preNode =curr;
+			curr = curr.next;
 		}
-
 	}
 
-	public static SingleLinkedListOperation insertIntoList(SingleLinkedListOperation list,int v) {
-		Node new_node = new  Node(v);
-		new_node.next = null;
-		if(list.head == null) {
-			list.head = new_node;
-		}else {
-			Node curr=list.head;
-			while(curr != null) {
-				if(curr.next == null) {
-					curr.next =new_node;
-					curr.next =null;
-				}
-			}
-		}
-		return list;
-	}
 	public static void main(String[] args) {
-		SingleLinkedListOperation list = new SingleLinkedListOperation(); 
-		list = insert(list, 1); 
-		list = insert(list, 2); 
-		list = insert(list, 3); 
-		list = insert(list, 4); 
-		list = insert(list, 5); 
-		list = insert(list, 6); 
-		list = insert(list, 7); 
-		//printList(list); 
-		//printList(list);
-		SingleLinkedListOperation list1 = new SingleLinkedListOperation(); 
-		list1 = insertIntoList(list1, 1);
-		list1 = insertIntoList(list1, 2); 
-		printList(list1);
-		//System.out.println(searchInlist(list,9));
+
+		SingleLinkedListOperation list2 = new SingleLinkedListOperation();
+		list2 = insertAtAnyLocation(list2, 8,-1);//at the start
+		System.out.println(list2.head.value+"        "+list2.tail.value);
+		list2 = insertAtEnd(list2, 1);
+		list2 = insertAtAnyLocation(list2, 11,-1);//at the start
+		list2 = insertAtEnd(list2, 2); 
+		System.out.println(list2.head.value+"        "+list2.tail.value);
+		list2 = insertAtAnyLocation(list2, 9,1);//at the middle 
+		System.out.println(list2.head.value+"        "+list2.tail.value);
+		list2 = insertAtAnyLocation(list2, 10,100);//at the end 
+		System.out.println(list2.head.value+"        "+list2.tail.value);
+		
+		
+		printList(list2);//Print the value	
+		
+		System.out.println(searchInlist(list2, 2));//Search
+		
+		deleteFromList(list2, 1);//DELETE
+		printList(list2);//Print the value
+		deleteFromList(list2, 10);//DELETE
+		printList(list2);//Print the value
+		deleteFromList(list2, 11);//DELETE
+		printList(list2);//Print the value
+		deleteFromList(list2, 2);//DELETE
+		printList(list2);//Print the value
+		deleteFromList(list2, 9);//DELETE
+		System.out.println("jjj");
+		printList(list2);//Print the value
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
