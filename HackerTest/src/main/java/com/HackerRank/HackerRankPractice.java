@@ -13,15 +13,32 @@ import java.util.TreeMap;
 public class HackerRankPractice {
 
 	public static void main(String[] args) {
-		System.out.println(dayOfProgrammer(1800));
+		int[] az = { 1, 2, 3, 4, 5 };
+		int[] az1 = { 2, 3, -4 };
+		int[] az2 = { 3, -2, -4 };
+		// int[] az1=null;
+		// plusMinus(az);
+		// staircase(4);
+		// miniMaxSum(az);
+		// timeConversion("07:05:45AM");
+		// alternatingCharacters("AABBB");
+
+		int[][] t = { { 1, 2, 3, 4, 5 }, { 1, 2, 3 } };
+		// countSubstrings("abca",t);
+		// permutation(); Not able to
+		// countApplesAndOranges(7,10,4,12,az1,az2);
+		// System.out.println(kangaroo(0,3,4,2));
+		// System.out.println(kangaroo(0,2,5,3));
+		// encryption("ashleyfsdf");
+		// sequreBox();
+		//System.out.println(minimumNumber(5, "4700	"));
+		//System.out.println(dayOfProgrammer(1800));
 		// migratoryBirds();
-		// 18001213575
-		// 01171450051
-		// 04435470552
-
-		int[] z = { 1, 3, 2, 6, 1, 2 };
-		System.out.println(divisibleSumPairs(6, 3, z));
-
+		
+//		int[] z = { 1, 3, 2, 6, 1, 2 };
+//		System.out.println(divisibleSumPairs(6, 3, z));
+	}
+	public void example10() {
 		LinkedList<LinkedList> al = new LinkedList<LinkedList>();
 		LinkedList<Integer> v = new LinkedList<Integer>();
 		v.add(1);
@@ -55,25 +72,6 @@ public class HackerRankPractice {
 			}
 		}
 		Math.abs(sumA - sumB);
-		int[] az = { 1, 2, 3, 4, 5 };
-		int[] az1 = { 2, 3, -4 };
-		int[] az2 = { 3, -2, -4 };
-		// int[] az1=null;
-		// plusMinus(az);
-		// staircase(4);
-		// miniMaxSum(az);
-		// timeConversion("07:05:45AM");
-		// alternatingCharacters("AABBB");
-
-		int[][] t = { { 1, 2, 3, 4, 5 }, { 1, 2, 3 } };
-		// countSubstrings("abca",t);
-		// permutation(); Not able to
-		// countApplesAndOranges(7,10,4,12,az1,az2);
-		// System.out.println(kangaroo(0,3,4,2));
-		// System.out.println(kangaroo(0,2,5,3));
-		// encryption("ashleyfsdf");
-		// sequreBox();
-		System.out.println(minimumNumber(5, "4700	"));
 	}
 
 	static int minimumNumber(int n, String password) {
